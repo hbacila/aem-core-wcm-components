@@ -15,7 +15,7 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <button data-sly-use.button="com.adobe.cq.wcm.core.components.models.form.Button"
         type="${button.type}" class="cmp-form-button" name="${button.name}" value="${button.value}"
-        data-sly-test.lastModified="${properties['cq:lastModified'].getTime.toGMTString || properties['jcr:lastModified'].getTime.toGMTString || properties['jcr:created'].getTime.toGMTString}"
+        data-sly-set.lastModified="${properties['cq:lastModified'].getTime.toGMTString || properties['jcr:lastModified'].getTime.toGMTString || properties['jcr:created'].getTime.toGMTString}"
         ceddl-observe="entity"
         ceddl-click="navigate"
         data-id="${resource.path}"

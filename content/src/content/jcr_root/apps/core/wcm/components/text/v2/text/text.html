@@ -17,7 +17,7 @@
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
      data-sly-test.text="${textModel.text}"
      class="cmp-text"
-     data-sly-test.lastModified="${properties['cq:lastModified'].getTime.toGMTString || properties['jcr:lastModified'].getTime.toGMTString || properties['jcr:created'].getTime.toGMTString}"
+     data-sly-set.lastModified="${properties['cq:lastModified'].getTime.toGMTString || properties['jcr:lastModified'].getTime.toGMTString || properties['jcr:created'].getTime.toGMTString}"
      ceddl-observe="entity"
      data-id="${resource.path}"
      data-type="Text (V2)"

@@ -18,8 +18,8 @@
       data-sly-use.head="head.html"
       data-sly-use.footer="footer.html"
       data-sly-use.redirect="redirect.html"
-      data-sly-test.template="${pageProperties['cq:template']}"
-      data-sly-test.lastModified="${properties['cq:lastModified'].getTime.toGMTString || properties['jcr:lastModified'].getTime.toGMTString || properties['jcr:created'].getTime.toGMTString}"
+      data-sly-set.template="${pageProperties['cq:template']}"
+      data-sly-set.lastModified="${properties['cq:lastModified'].getTime.toGMTString || properties['jcr:lastModified'].getTime.toGMTString || properties['jcr:created'].getTime.toGMTString}"
 >
     <head data-sly-call="${head.head @ page = page}"></head>
     <body class="${page.cssClassNames}"
