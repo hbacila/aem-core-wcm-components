@@ -15,9 +15,12 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <template data-sly-template.item="${@ list, item}">
     <article>
-        <a href="${item.path @ extension='html'}" data-sly-unwrap="${!list.linkItems}">
+        <a href="${item.path @ extension='html'}" ceddl-observe="entity" ceddl-click="navigate" data-id="${item.path}"
+            data-type="Link (HTML)" data-name="${item.title}" data-last-modified="${item.lastModified}"
+            data-link-url="${item.URL}" data-sly-unwrap="${!list.linkItems}">
             <span class="cmp-list--item-title">${item.pageTitle || item.title || item.name}</span>
-            <span data-sly-test="${list.showModificationDate}" class="cmp-list--item-date">${list.dateFormatString @ format=item.lastModified}</span>
+            <span data-sly-test="${list.showModificationDate}" class="cmp-list--item-date">${list.dateFormatString @
+                format=item.lastModified}</span>
         </a>
         <span data-sly-test="${list.showDescription}" class="cmp-list--item-description">${item.description}</span>
     </article>

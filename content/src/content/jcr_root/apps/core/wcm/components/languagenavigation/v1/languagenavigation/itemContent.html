@@ -17,6 +17,14 @@
     <span data-sly-test.hasChildren="${item.children.size > 0}"
           class="cmp-languagenavigation__item-title" lang="${item.language}">${item.title}</span>
     <a data-sly-test="${!hasChildren}"
-       class="cmp-languagenavigation__item-link" href="${item.URL}"
-       hreflang="${item.language}" lang="${item.language}" rel="alternate" title="${item.title}">${item.title}</a>
+        class="cmp-languagenavigation__item-link" 
+        href="${item.URL}"
+        ceddl-observe="entity"
+        ceddl-click="navigate"
+        data-id="${item.path}"
+        data-type="Link (HTML)"
+        data-name="${item.title}"
+        data-last-modified="${item.lastModified}"
+        data-link-url="${item.URL}"
+        hreflang="${item.language}" lang="${item.language}" rel="alternate" title="${item.title}">${item.title}</a>
 </template>
