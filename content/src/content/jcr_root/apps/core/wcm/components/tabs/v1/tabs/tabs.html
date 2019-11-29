@@ -26,6 +26,7 @@
         data-sly-set.lastModified="${properties['cq:lastModified'].getTime.toGMTString || properties['jcr:lastModified'].getTime.toGMTString || properties['jcr:created'].getTime.toGMTString}"
         ceddl-observe="entity"
         data-id="${resource.path}"
+        data-name="${tab.title}"
         data-type="Tabs (V1)"
         data-last-modified="${lastModified}"
         data-items-number="${tabs.items.size}"

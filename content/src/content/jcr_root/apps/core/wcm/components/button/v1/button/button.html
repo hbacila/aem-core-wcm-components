@@ -18,7 +18,13 @@
         data-sly-element="${button.link ? 'a' : 'button'}"
         class="cmp-button"
         href="${button.link}"
-        aria-label="${button.accessibilityLabel}">
+        aria-label="${button.accessibilityLabel}"
+        ceddl-observe="entity"
+        data-id="${resource.path}"
+        data-type="Button (V1)"
+        data-text="${button.text}"
+        data-link-url="${button.link}"
+>
     <sly data-sly-call="${iconTemplate.icon @ icon=button.icon}"></sly>
     <span data-sly-test="${button.text}" class="cmp-button__text">${button.text}</span>
 </button>
