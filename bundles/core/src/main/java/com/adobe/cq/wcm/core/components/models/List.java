@@ -214,4 +214,8 @@ public interface List extends ComponentExporter {
         throw new UnsupportedOperationException();
     }
 
+    default String getDataLayerJson() {
+        throw new UnsupportedOperationException();
+    }
+
 }

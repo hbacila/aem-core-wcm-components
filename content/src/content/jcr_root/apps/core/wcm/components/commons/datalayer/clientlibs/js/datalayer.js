@@ -18,39 +18,59 @@
 
     var dataLayer = window.dataLayer = window.dataLayer || [];
 
-    function init(imageElt) {
-        imageElt.addEventListener("click", addClickToDataLayer);
-        var imageData = getImageData(imageElt);
+    function init(element) {
+        var elementData = getData(element);
         dataLayer.push({
             data: {
-                component: {
-                    image: imageData
-                }
+                component: getComponentObject(elementData)
             }
         });
+        trackClick(element, true); // TODO: need to track click events only for clickable elements
+    }
+
+    function trackClick(element, clickable) {
+        if (clickable) {
+            element.addEventListener("click", addClickToDataLayer);
+        }
+    }
+
+    function getComponentObject(elementData) {
+        var component = {};
+        component[elementData.type] = {};
+        component[elementData.type][generateUUID()] = elementData;
+        return component;
     }
 
     function addClickToDataLayer(event) {
-        var imageElt = event.currentTarget;
-        var imageData = getImageData(imageElt);
+        var element = event.currentTarget;
+        var elementData = getData(element);
         dataLayer.push({
-            event: "image clicked",
+            event: elementData.type + " clicked",
             info: {
-                path: imageData[Object.keys(imageData)[0]].path
+                id: elementData.id
             }
         });
     }
 
-    function getImageData(imageElt) {
-        var dataLayerJson = imageElt.getAttribute("data-cmp-image-data-layer");
+    function getData(element) {
+        var dataLayerJson = element.getAttribute("data-cmp-data-layer");
         return JSON.parse(dataLayerJson);
     }
 
     function onDocumentReady() {
-        var elements = document.querySelectorAll("[data-cmp-image-data-layer]");
+        var elements = document.querySelectorAll("[data-cmp-data-layer]");
         for (var i = 0; i < elements.length; i++) {
             init(elements[i]);
         }
+    }
+
+    function generateUUID() {
+        var d = new Date().getTime();
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
     }
 
     if (document.readyState !== "loading") {

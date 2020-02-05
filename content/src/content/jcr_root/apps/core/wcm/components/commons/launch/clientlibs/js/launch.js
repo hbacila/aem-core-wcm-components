@@ -19,7 +19,7 @@
     var dataLayer = window.dataLayer = window.dataLayer || [];
 
     function sendPageUpdateToLaunch(event, oldState, newState) {
-        console.log("Data sent to launch: data recorded for page " + newState.page.id);
+        console.log("Data sent to launch: data recorded for page " + Object.values(newState.component.page)[0].id);
     }
 
     function sendImageClickToLaunch(event, oldState, newState) {

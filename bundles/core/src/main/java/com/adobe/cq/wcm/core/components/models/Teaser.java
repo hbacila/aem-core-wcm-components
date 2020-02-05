@@ -213,4 +213,8 @@ public interface Teaser extends ComponentExporter {
         throw new UnsupportedOperationException();
     }
 
+    default String getDataLayerJson() {
+        throw new UnsupportedOperationException();
+    }
+
 }

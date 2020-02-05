@@ -44,4 +44,9 @@ public interface Tabs extends Container {
     default String getAccessibilityLabel() {
         throw new UnsupportedOperationException();
     }
+
+    default String getDataLayerJson() {
+        throw new UnsupportedOperationException();
+    }
+
 }

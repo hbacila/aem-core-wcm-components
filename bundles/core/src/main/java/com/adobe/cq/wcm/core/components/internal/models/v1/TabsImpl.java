@@ -27,6 +27,9 @@ import com.adobe.cq.export.json.ContainerExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Tabs;
 
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
+
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {Tabs.class, ComponentExporter.class, ContainerExporter.class}, resourceType = TabsImpl.RESOURCE_TYPE)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class TabsImpl extends PanelContainerImpl implements Tabs {
@@ -55,5 +58,13 @@ public class TabsImpl extends PanelContainerImpl implements Tabs {
     @Override
     public String getAccessibilityLabel() {
         return accessibilityLabel;
+    }
+
+    @Override
+    public String getDataLayerJson() {
+        JsonObjectBuilder data = Json.createObjectBuilder();
+        data.add("id", resource.getPath());
+        data.add("type", "tabs");
+        return  data.build().toString();
     }
 }

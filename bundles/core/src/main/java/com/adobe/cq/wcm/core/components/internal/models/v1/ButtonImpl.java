@@ -16,6 +16,8 @@
 package com.adobe.cq.wcm.core.components.internal.models.v1;
 
 import javax.inject.Named;
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.Exporter;
@@ -100,5 +102,13 @@ public class ButtonImpl implements Button {
     @Override
     public String getExportedType() {
         return request.getResource().getResourceType();
+    }
+
+    @Override
+    public String getDataLayerJson() {
+        JsonObjectBuilder data = Json.createObjectBuilder();
+        data.add("id", request.getResource().getPath());
+        data.add("type", "list");
+        return  data.build().toString();
     }
 }

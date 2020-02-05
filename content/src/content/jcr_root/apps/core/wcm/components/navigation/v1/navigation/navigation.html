@@ -21,6 +21,7 @@
      data-sly-test.hasContent="${navigation.items.size > 0}"
      data-sly-use.groupTemplate="group.html"
      data-sly-call="${groupTemplate.group @ items=navigation.items}"
-     aria-label="${navigation.accessibilityLabel}">
+     aria-label="${navigation.accessibilityLabel}"
+     data-cmp-data-layer="${navigation.dataLayerJson}">
 </nav>
 <sly data-sly-call="${template.placeholder @ isEmpty=!hasContent, classAppend='cmp-navigation'}"></sly>

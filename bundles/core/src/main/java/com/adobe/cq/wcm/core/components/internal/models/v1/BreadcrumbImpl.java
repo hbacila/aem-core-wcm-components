@@ -20,6 +20,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ValueMap;
@@ -109,5 +111,13 @@ public class BreadcrumbImpl implements Breadcrumb {
 
     private boolean checkIfNotHidden(Page page) {
         return !page.isHideInNav() || showHidden;
+    }
+
+    @Override
+    public String getDataLayerJson() {
+        JsonObjectBuilder data = Json.createObjectBuilder();
+        data.add("id", request.getResource().getPath());
+        data.add("type", "list");
+        return  data.build().toString();
     }
 }

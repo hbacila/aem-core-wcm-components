@@ -24,6 +24,9 @@ import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
+
 public class NavigationItemImpl extends PageListItemImpl implements NavigationItem {
 
     protected List<NavigationItem> children = Collections.emptyList();
@@ -57,6 +60,14 @@ public class NavigationItemImpl extends PageListItemImpl implements NavigationIt
     @Override
     public int getLevel() {
         return level;
+    }
+
+    @Override
+    public String getDataLayerJson() {
+        JsonObjectBuilder data = Json.createObjectBuilder();
+        data.add("id", page.getContentResource().getPath());
+        data.add("type", "navigationitem");
+        return  data.build().toString();
     }
 
 }

@@ -17,3 +17,4 @@
 #base=js
 
 adobe-client-data-layer.min.js
+datalayer.js

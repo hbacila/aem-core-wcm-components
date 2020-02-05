@@ -16,6 +16,8 @@
 package com.adobe.cq.wcm.core.components.internal.models.v1;
 
 import javax.annotation.PostConstruct;
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ValueMap;
@@ -73,5 +75,13 @@ public class CarouselImpl extends PanelContainerImpl implements Carousel {
     @Override
     public String getAccessibilityLabel() {
         return accessibilityLabel;
+    }
+
+    @Override
+    public String getDataLayerJson() {
+        JsonObjectBuilder data = Json.createObjectBuilder();
+        data.add("id", resource.getPath());
+        data.add("type", "carousel");
+        return  data.build().toString();
     }
 }

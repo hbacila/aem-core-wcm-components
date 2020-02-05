@@ -204,8 +204,9 @@ public class PageImpl extends com.adobe.cq.wcm.core.components.internal.models.v
     public String getDataLayerJson() {
         JsonObjectBuilder pageData = Json.createObjectBuilder();
         pageData.add("id", currentPage.getPath());
-        pageData.add("siteLanguage", getLanguage());
-        pageData.add("pageName", getTitle());
+        pageData.add("type", "page");
+        pageData.add("language", getLanguage());
+        pageData.add("name", getTitle());
         return  pageData.build().toString();
     }
 }

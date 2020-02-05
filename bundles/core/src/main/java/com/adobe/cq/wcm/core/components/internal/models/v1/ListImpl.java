@@ -86,7 +86,7 @@ public class ListImpl implements List {
     private ResourceResolver resourceResolver;
 
     @SlingObject
-    private Resource resource;
+    protected Resource resource;
 
     @Self
     private SlingHttpServletRequest request;

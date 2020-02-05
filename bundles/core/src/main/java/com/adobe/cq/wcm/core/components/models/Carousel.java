@@ -86,4 +86,8 @@ public interface Carousel extends Container {
         throw new UnsupportedOperationException();
     }
 
+    default String getDataLayerJson() {
+        throw new UnsupportedOperationException();
+    }
+
 }

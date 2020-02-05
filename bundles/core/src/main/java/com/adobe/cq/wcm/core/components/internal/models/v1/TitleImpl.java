@@ -17,6 +17,8 @@
 package com.adobe.cq.wcm.core.components.internal.models.v1;
 
 import javax.annotation.PostConstruct;
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -38,6 +40,8 @@ import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.day.cq.wcm.api.designer.Style;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.Calendar;
 
 @Model(adaptables = SlingHttpServletRequest.class,
        adapters = {Title.class, ComponentExporter.class},
@@ -131,6 +135,19 @@ public class TitleImpl implements Title {
     @Override
     public String getExportedType() {
         return resource.getResourceType();
+    }
+
+    @Override
+    public String getDataLayerJson() {
+//        JsonObjectBuilder data = Json.createObjectBuilder();
+        JsonObjectBuilder titleData = Json.createObjectBuilder();
+        titleData.add("id", resource.getPath());
+        titleData.add("type", "title");
+        titleData.add("text", getText());
+        titleData.add("linkUrl", getLinkURL());
+//        String titleId = "title_" + Calendar.getInstance().getTimeInMillis();
+//        data.add(titleId, titleData);
+        return  titleData.build().toString();
     }
 
 }

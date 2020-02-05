@@ -72,4 +72,9 @@ public interface Breadcrumb extends ComponentExporter {
     default String getExportedType() {
         throw new UnsupportedOperationException();
     }
+
+    default String getDataLayerJson() {
+        throw new UnsupportedOperationException();
+    }
+
 }

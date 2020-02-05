@@ -19,11 +19,13 @@ import java.util.*;
 
 import javax.annotation.PostConstruct;
 import javax.json.Json;
+import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.jetbrains.annotations.NotNull;
@@ -107,7 +109,7 @@ public class ImageImpl extends com.adobe.cq.wcm.core.components.internal.models.
             if (smartSizes.length > 0) {
                 // only include the quality selector in the URL, if there are sizes configured
                 staticSelectors += DOT + jpegQuality;
-            } 
+            }
             srcUriTemplate = baseResourcePath + DOT + staticSelectors +
                 SRC_URI_TEMPLATE_WIDTH_VAR + DOT + extension +
                 (inTemplate ? templateRelativePath : "") + (lastModifiedDate > 0 ?("/" + lastModifiedDate +
@@ -189,15 +191,45 @@ public class ImageImpl extends com.adobe.cq.wcm.core.components.internal.models.
 
     @Override
     public String getDataLayerJson() {
-        JsonObjectBuilder image = Json.createObjectBuilder();
-        JsonObjectBuilder imageProperties = Json.createObjectBuilder();
-        imageProperties.add("path", resource.getPath());
-        imageProperties.add("fileReference", fileReference);
-        imageProperties.add("src", src);
-        imageProperties.add("title", title);
-        String imageId = "image_" + Calendar.getInstance().getTimeInMillis();
-        image.add(imageId, imageProperties);
-        return  image.build().toString();
+ //       JsonObjectBuilder image = Json.createObjectBuilder();
+        JsonObjectBuilder imageData = Json.createObjectBuilder();
+        imageData.add("id", resource.getPath());
+        imageData.add("type", "image");
+        imageData.add("asset", this.getAssetMetadata());
+        imageData.add("src", src);
+        imageData.add("name", title);
+        imageData.add("linkUrl", this.getLink());
+ //       String imageId = "image_" + Calendar.getInstance().getTimeInMillis();
+ //       image.add(imageId, imageData);
+        return  imageData.build().toString();
     }
 
+    private JsonObject getAssetMetadata() {
+        JsonObjectBuilder assetMetadata = Json.createObjectBuilder();
+        Resource assetResource = resource.getResourceResolver().getResource(fileReference);
+        if (assetResource != null) {
+            Asset asset = assetResource.adaptTo(Asset.class);
+            if (asset != null) {
+                assetMetadata.add("id", asset.getID());
+                assetMetadata.add("name", asset.getName());
+                assetMetadata.add("path", asset.getPath());
+                assetMetadata.add("type", asset.getMimeType());
+                assetMetadata.add("url", "https://"); // aboslute URL
+                assetMetadata.add("tags", this.getAssetTags(asset));
+            }
+        }
+        return assetMetadata.build();
+    }
+
+    private JsonObject getAssetTags(Asset asset) {
+        JsonObjectBuilder assetTags = Json.createObjectBuilder();
+        String tagsValue = asset.getMetadataValueFromJcr("cq:tags");
+        if (tagsValue != null) {
+            String[] tags = tagsValue.split(",");
+            for (String tag : tags) {
+                assetTags.add(tag, 1);
+            }
+        }
+        return assetTags.build();
+    }
 }

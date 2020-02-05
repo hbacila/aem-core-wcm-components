@@ -16,6 +16,8 @@
 package com.adobe.cq.wcm.core.components.internal.models.v1;
 
 import javax.inject.Inject;
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -63,5 +65,14 @@ public class TextImpl implements Text {
     @Override
     public String getExportedType() {
         return resource.getResourceType();
+    }
+
+    @Override
+    public String getDataLayerJson() {
+        JsonObjectBuilder data = Json.createObjectBuilder();
+        data.add("id", resource.getPath());
+        data.add("type", "text");
+        data.add("text", getText().substring(0, 100));
+        return  data.build().toString();
     }
 }
