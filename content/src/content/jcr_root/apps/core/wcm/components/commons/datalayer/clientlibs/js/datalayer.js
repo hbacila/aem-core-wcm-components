@@ -37,7 +37,7 @@
     function getComponentObject(elementData) {
         var component = {};
         component[elementData.type] = {};
-        component[elementData.type][generateUUID()] = elementData;
+        component[elementData.type][generateUniqueID()] = elementData;
         return component;
     }
 
@@ -52,6 +52,10 @@
         });
     }
 
+    function generateUniqueID() {
+        return Date.now() + "" + Math.trunc(Math.random() * 1000);
+    }
+
     function getData(element) {
         var dataLayerJson = element.getAttribute("data-cmp-data-layer");
         return JSON.parse(dataLayerJson);
@@ -62,15 +66,6 @@
         for (var i = 0; i < elements.length; i++) {
             init(elements[i]);
         }
-    }
-
-    function generateUUID() {
-        var d = new Date().getTime();
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = (d + Math.random() * 16) % 16 | 0;
-            d = Math.floor(d / 16);
-            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-        });
     }
 
     if (document.readyState !== "loading") {

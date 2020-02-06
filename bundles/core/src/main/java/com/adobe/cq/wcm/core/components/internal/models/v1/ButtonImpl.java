@@ -108,7 +108,9 @@ public class ButtonImpl implements Button {
     public String getDataLayerJson() {
         JsonObjectBuilder data = Json.createObjectBuilder();
         data.add("id", request.getResource().getPath());
-        data.add("type", "list");
+        data.add("type", "button");
+        data.add("text", getText());
+        data.add("linkUrl", getLink());
         return  data.build().toString();
     }
 }

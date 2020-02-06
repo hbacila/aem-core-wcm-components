@@ -139,14 +139,11 @@ public class TitleImpl implements Title {
 
     @Override
     public String getDataLayerJson() {
-//        JsonObjectBuilder data = Json.createObjectBuilder();
         JsonObjectBuilder titleData = Json.createObjectBuilder();
         titleData.add("id", resource.getPath());
         titleData.add("type", "title");
         titleData.add("text", getText());
         titleData.add("linkUrl", getLinkURL());
-//        String titleId = "title_" + Calendar.getInstance().getTimeInMillis();
-//        data.add(titleId, titleData);
         return  titleData.build().toString();
     }
 

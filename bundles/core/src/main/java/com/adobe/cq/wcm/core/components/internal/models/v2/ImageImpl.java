@@ -191,7 +191,6 @@ public class ImageImpl extends com.adobe.cq.wcm.core.components.internal.models.
 
     @Override
     public String getDataLayerJson() {
- //       JsonObjectBuilder image = Json.createObjectBuilder();
         JsonObjectBuilder imageData = Json.createObjectBuilder();
         imageData.add("id", resource.getPath());
         imageData.add("type", "image");
@@ -199,8 +198,6 @@ public class ImageImpl extends com.adobe.cq.wcm.core.components.internal.models.
         imageData.add("src", src);
         imageData.add("name", title);
         imageData.add("linkUrl", this.getLink());
- //       String imageId = "image_" + Calendar.getInstance().getTimeInMillis();
- //       image.add(imageId, imageData);
         return  imageData.build().toString();
     }
 

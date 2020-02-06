@@ -279,6 +279,7 @@ public class TeaserImpl extends AbstractImageDelegatingModel implements Teaser {
         JsonObjectBuilder data = Json.createObjectBuilder();
         data.add("id", resource.getPath());
         data.add("type", "teaser");
+        data.add("name", getTitle());
         return  data.build().toString();
     }
 

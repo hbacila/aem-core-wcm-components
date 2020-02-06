@@ -271,8 +271,9 @@ public class NavigationImpl implements Navigation {
     @Override
     public String getDataLayerJson() {
         JsonObjectBuilder data = Json.createObjectBuilder();
-        data.add("id", currentPage.getPath());
+        data.add("id", request.getResource().getPath());
         data.add("type", "navigation");
+        data.add("itemsNumber", getItems().size());
         return  data.build().toString();
     }
 

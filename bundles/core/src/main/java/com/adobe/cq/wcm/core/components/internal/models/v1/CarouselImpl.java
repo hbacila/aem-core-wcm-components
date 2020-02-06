@@ -82,6 +82,7 @@ public class CarouselImpl extends PanelContainerImpl implements Carousel {
         JsonObjectBuilder data = Json.createObjectBuilder();
         data.add("id", resource.getPath());
         data.add("type", "carousel");
+        data.add("itemsNumber", getItems().size());
         return  data.build().toString();
     }
 }

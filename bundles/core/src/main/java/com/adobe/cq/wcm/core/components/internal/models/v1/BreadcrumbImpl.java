@@ -117,7 +117,8 @@ public class BreadcrumbImpl implements Breadcrumb {
     public String getDataLayerJson() {
         JsonObjectBuilder data = Json.createObjectBuilder();
         data.add("id", request.getResource().getPath());
-        data.add("type", "list");
+        data.add("type", "breadcrumb");
+        data.add("itemsNumber", getItems().size());
         return  data.build().toString();
     }
 }

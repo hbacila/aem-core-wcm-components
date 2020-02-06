@@ -71,6 +71,7 @@ public class ListImpl extends com.adobe.cq.wcm.core.components.internal.models.v
         JsonObjectBuilder data = Json.createObjectBuilder();
         data.add("id", resource.getPath());
         data.add("type", "list");
+        data.add("itemsNumber", getListItems().size());
         return  data.build().toString();
     }
 
