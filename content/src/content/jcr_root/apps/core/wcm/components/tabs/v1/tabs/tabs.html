@@ -28,6 +28,7 @@
         <li role="tab"
             class="cmp-tabs__tab${isActive ? ' cmp-tabs__tab--active' : ''}"
             tabindex="${isActive ? '0' : '-1'}"
+            data-cmp-clickable="${tab.dataLayerJson}"
             data-cmp-hook-tabs="tab">${tab.title}</li>
     </ol>
     <div data-sly-repeat.item="${tabs.items}"

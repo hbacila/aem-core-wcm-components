@@ -18,20 +18,24 @@
 
     var dataLayer = window.dataLayer = window.dataLayer || [];
 
-    function init(element) {
-        var elementData = getData(element);
+    dataLayer.push({
+        on: "clicked:listItem",
+        handler: function(event) {
+            console.log(event)
+        }
+    });
+
+    function addComponentToDataLayer(component) {
+        var componentData = getComponentData(component);
         dataLayer.push({
             data: {
-                component: getComponentObject(elementData)
+                component: getComponentObject(componentData)
             }
         });
-        trackClick(element, true); // TODO: need to track click events only for clickable elements
     }
 
-    function trackClick(element, clickable) {
-        if (clickable) {
-            element.addEventListener("click", addClickToDataLayer);
-        }
+    function attachClickEventListener(element) {
+        element.addEventListener("click", addClickToDataLayer);
     }
 
     function getComponentObject(elementData) {
@@ -43,12 +47,13 @@
 
     function addClickToDataLayer(event) {
         var element = event.currentTarget;
-        var elementData = getData(element);
+        var elementData = getClickData(element);
+
+        console.log("addClickToDataLayer", elementData);
+
         dataLayer.push({
-            event: elementData.type + " clicked",
-            info: {
-                id: elementData.id
-            }
+            event: 'clicked:' + elementData.type,
+            info: elementData
         });
     }
 
@@ -56,16 +61,27 @@
         return Date.now() + "" + Math.trunc(Math.random() * 1000);
     }
 
-    function getData(element) {
-        var dataLayerJson = element.getAttribute("data-cmp-data-layer");
+    function getComponentData(element) {
+        var dataLayerJson = element.dataset.cmpDataLayer;
         return JSON.parse(dataLayerJson);
     }
 
+    function getClickData(element) {
+        var clickDataJson = element.dataset.cmpClickable;
+        return JSON.parse(clickDataJson);
+    }
+
     function onDocumentReady() {
-        var elements = document.querySelectorAll("[data-cmp-data-layer]");
-        for (var i = 0; i < elements.length; i++) {
-            init(elements[i]);
-        }
+        var components = document.querySelectorAll("[data-cmp-data-layer]");
+        var clickableElements = document.querySelectorAll("[data-cmp-clickable]");
+
+        components.forEach(function (component) {
+            addComponentToDataLayer(component)
+        });
+
+        clickableElements.forEach(function (element) {
+            attachClickEventListener(element)
+        });
     }
 
     if (document.readyState !== "loading") {
