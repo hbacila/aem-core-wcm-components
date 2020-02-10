@@ -72,6 +72,7 @@
                 class="cmp-carousel__indicator${itemList.first ? ' cmp-carousel__indicator--active' : ''}"
                 role="tab"
                 aria-label="${'Slide {0}' @ format=[itemList.count], i18n}"
+                data-cmp-clickable="${item.dataLayerJson}"
                 data-cmp-hook-carousel="indicator">${item.title}</li>
         </ol>
     </div>

@@ -25,6 +25,20 @@
         }
     });
 
+    dataLayer.push({
+        on: "accordion:expanded",
+        handler: function(event) {
+            console.log(event)
+        }
+    });
+
+    dataLayer.push({
+        on: "accordion:collapsed",
+        handler: function(event) {
+            console.log(event)
+        }
+    });
+
     function addComponentToDataLayer(component) {
         var componentData = getComponentData(component);
         dataLayer.push({

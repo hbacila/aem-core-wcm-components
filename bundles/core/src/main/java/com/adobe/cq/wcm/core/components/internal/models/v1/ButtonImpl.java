@@ -110,7 +110,10 @@ public class ButtonImpl implements Button {
         data.add("id", request.getResource().getPath());
         data.add("type", "button");
         data.add("text", getText());
-        data.add("linkUrl", getLink());
+
+        if (getLink() != null)
+            data.add("linkUrl", getLink());
+
         return  data.build().toString();
     }
 }
