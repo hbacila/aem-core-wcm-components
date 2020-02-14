@@ -316,14 +316,14 @@
             if (expanded) {
                 item.setAttribute(dataAttributes.item.expanded, "");
                 dataLayer.push({
-                    event: 'accordion:expanded',
-                    info: JSON.parse(item.dataset.cmpExpandable)
+                    event: 'accordionItem:expanded',
+                    info: JSON.parse(item.dataset.cmpDataLayer)
                 })
             } else {
                 item.removeAttribute(dataAttributes.item.expanded);
                 dataLayer.push({
-                    event: 'accordion:collapsed',
-                    info: JSON.parse(item.dataset.cmpExpandable)
+                    event: 'accordionItem:collapsed',
+                    info: JSON.parse(item.dataset.cmpDataLayer)
                 })
             }
             refreshItem(item);

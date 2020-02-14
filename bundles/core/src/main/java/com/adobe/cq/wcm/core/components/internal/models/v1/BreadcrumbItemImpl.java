@@ -24,6 +24,9 @@ import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
+
 import static org.apache.sling.api.SlingConstants.PROPERTY_PATH;
 
 @JsonIgnoreProperties(value = {"page", "children", "level", "description", "lastModified",PROPERTY_PATH})
@@ -31,6 +34,17 @@ public class BreadcrumbItemImpl extends NavigationItemImpl implements Navigation
 
     public BreadcrumbItemImpl(Page page, boolean active, SlingHttpServletRequest request, int level, List<NavigationItem> children) {
         super(page, active, request, level, children);
+    }
+
+    @Override
+    public String getDataLayerJson() {
+        JsonObjectBuilder data = Json.createObjectBuilder();
+        data.add("id", getPath());
+        data.add("type", "breadcrumbItem");
+        data.add("name", getName());
+        data.add("title", getTitle());
+        data.add("linkUrl", getURL());
+        return  data.build().toString();
     }
 
 }

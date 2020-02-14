@@ -143,7 +143,10 @@ public class TitleImpl implements Title {
         titleData.add("id", resource.getPath());
         titleData.add("type", "title");
         titleData.add("text", getText());
-        titleData.add("linkUrl", getLinkURL());
+
+        if (getLinkURL() != null)
+            titleData.add("linkUrl", getLinkURL());
+
         return  titleData.build().toString();
     }
 

@@ -66,9 +66,9 @@ public class NavigationItemImpl extends PageListItemImpl implements NavigationIt
     public String getDataLayerJson() {
         JsonObjectBuilder data = Json.createObjectBuilder();
         data.add("id", getPath());
-        data.add("type", "navigationitem");
+        data.add("type", "navigationItem");
         data.add("name", getName());
-        data.add("text", getTitle());
+        data.add("title", getTitle());
         data.add("linkUrl", getURL());
         return  data.build().toString();
     }

@@ -273,7 +273,7 @@ public class NavigationImpl implements Navigation {
         JsonObjectBuilder data = Json.createObjectBuilder();
         data.add("id", request.getResource().getPath());
         data.add("type", "navigation");
-        data.add("itemsNumber", getItems().size());
+        data.add("itemCount", getItems().size());
         return  data.build().toString();
     }
 

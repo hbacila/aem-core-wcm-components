@@ -65,8 +65,11 @@ public class TabsImpl extends PanelContainerImpl implements Tabs {
         JsonObjectBuilder data = Json.createObjectBuilder();
         data.add("id", resource.getPath());
         data.add("type", "tabs");
-        data.add("itemsNumber", getItems().size());
-        data.add("activeItem", getActiveItem());
+        data.add("itemCount", getItems().size());
+
+        if(getActiveItem() != null)
+            data.add("activeItem", getActiveItem());
+
         return  data.build().toString();
     }
 }

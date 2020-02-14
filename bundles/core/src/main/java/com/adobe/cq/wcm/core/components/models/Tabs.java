@@ -45,8 +45,4 @@ public interface Tabs extends Container {
         throw new UnsupportedOperationException();
     }
 
-    default String getDataLayerJson() {
-        throw new UnsupportedOperationException();
-    }
-
 }

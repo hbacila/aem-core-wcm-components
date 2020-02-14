@@ -72,7 +72,7 @@ public class TextImpl implements Text {
         JsonObjectBuilder data = Json.createObjectBuilder();
         data.add("id", resource.getPath());
         data.add("type", "text");
-        data.add("text", getText().substring(0, 100));
+        data.add("text", getText().length() > 100 ? getText().substring(0, 100) : getText());
         return  data.build().toString();
     }
 }

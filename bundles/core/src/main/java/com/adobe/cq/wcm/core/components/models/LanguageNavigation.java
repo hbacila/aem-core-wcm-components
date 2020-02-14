@@ -63,4 +63,8 @@ public interface LanguageNavigation extends ComponentExporter {
     default String getExportedType() {
         throw new UnsupportedOperationException();
     }
+
+    default String getDataLayerJson() {
+        throw new UnsupportedOperationException();
+    }
 }

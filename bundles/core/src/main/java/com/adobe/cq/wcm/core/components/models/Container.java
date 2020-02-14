@@ -109,4 +109,8 @@ public interface Container extends Component, ContainerExporter {
     default String[] getExportedItemsOrder() {
         throw new UnsupportedOperationException();
     }
+
+    default String getDataLayerJson() {
+        throw new UnsupportedOperationException();
+    }
 }

@@ -26,6 +26,9 @@ import com.adobe.cq.wcm.core.components.models.LanguageNavigationItem;
 import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.day.cq.wcm.api.Page;
 
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
+
 public class LanguageNavigationItemImpl extends NavigationItemImpl implements LanguageNavigationItem {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LanguageNavigationItemImpl.class);
@@ -68,6 +71,17 @@ public class LanguageNavigationItemImpl extends NavigationItemImpl implements La
             language = page.getLanguage(false).toString().replace('_', '-');
         }
         return language;
+    }
+
+    @Override
+    public String getDataLayerJson() {
+        JsonObjectBuilder data = Json.createObjectBuilder();
+        data.add("id", getPath());
+        data.add("type", "languageNavigationItem");
+        data.add("name", getName());
+        data.add("title", getTitle());
+        data.add("linkUrl", getURL());
+        return  data.build().toString();
     }
 
 }

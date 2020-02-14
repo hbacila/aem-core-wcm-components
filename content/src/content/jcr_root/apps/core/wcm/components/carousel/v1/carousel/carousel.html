@@ -31,6 +31,7 @@
              class="cmp-carousel__item${itemList.first ? ' cmp-carousel__item--active' : ''}"
              role="tabpanel"
              aria-label="${'Slide {0} of {1}' @ format=[itemList.count, carousel.items.size], i18n}"
+             data-cmp-data-layer="${item.dataLayerJson}"
              data-cmp-hook-carousel="item"></div>
         <div class="cmp-carousel__actions">
             <button class="cmp-carousel__action cmp-carousel__action--previous"
@@ -72,7 +73,6 @@
                 class="cmp-carousel__indicator${itemList.first ? ' cmp-carousel__indicator--active' : ''}"
                 role="tab"
                 aria-label="${'Slide {0}' @ format=[itemList.count], i18n}"
-                data-cmp-clickable="${item.dataLayerJson}"
                 data-cmp-hook-carousel="indicator">${item.title}</li>
         </ol>
     </div>

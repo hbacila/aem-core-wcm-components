@@ -194,10 +194,17 @@ public class ImageImpl extends com.adobe.cq.wcm.core.components.internal.models.
         JsonObjectBuilder imageData = Json.createObjectBuilder();
         imageData.add("id", resource.getPath());
         imageData.add("type", "image");
-        imageData.add("asset", this.getAssetMetadata());
         imageData.add("src", src);
-        imageData.add("name", title);
-        imageData.add("linkUrl", this.getLink());
+
+        if(title != null)
+            imageData.add("name", title);
+
+        if(this.getAssetMetadata() != null)
+            imageData.add("asset", this.getAssetMetadata());
+
+        if (getLink() != null)
+            imageData.add("linkUrl", getLink());
+
         return  imageData.build().toString();
     }
 

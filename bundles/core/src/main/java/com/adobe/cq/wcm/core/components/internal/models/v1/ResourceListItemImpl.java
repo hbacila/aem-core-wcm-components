@@ -89,9 +89,14 @@ public class ResourceListItemImpl implements ListItem {
     public String getDataLayerJson() {
         JsonObjectBuilder data = Json.createObjectBuilder();
         data.add("id", path);
-        data.add("type", "listItem");
-        data.add("text", getTitle());
-        //data.add("linkUrl", getURL());
+        data.add("type", "resourceListItem");
+
+        if (getName() != null)
+            data.add("name", getName());
+
+        if (getTitle() != null)
+            data.add("title", getTitle());
+
         return  data.build().toString();
     }
 

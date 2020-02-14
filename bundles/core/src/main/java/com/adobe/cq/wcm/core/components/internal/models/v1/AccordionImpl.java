@@ -35,6 +35,8 @@ import com.adobe.cq.wcm.core.components.internal.Utils;
 import com.adobe.cq.wcm.core.components.models.Accordion;
 import com.day.cq.wcm.api.designer.Style;
 
+import javax.json.*;
+
 @Model(
     adaptables = SlingHttpServletRequest.class,
     adapters = { Accordion.class, ComponentExporter.class, ContainerExporter.class },
@@ -109,5 +111,21 @@ public class AccordionImpl extends PanelContainerImpl implements Accordion {
             return heading.getElement();
         }
         return null;
+    }
+
+    @Override
+    public String getDataLayerJson() {
+        JsonObjectBuilder data = Json.createObjectBuilder();
+        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+
+        for(String expandedItem : getExpandedItems()) {
+            arrayBuilder.add(expandedItem);
+        }
+
+        data.add("id", resource.getPath());
+        data.add("type", "accordion");
+        data.add("itemCount", getItems().size());
+        data.add("expandedItems", arrayBuilder.build());
+        return  data.build().toString();
     }
 }

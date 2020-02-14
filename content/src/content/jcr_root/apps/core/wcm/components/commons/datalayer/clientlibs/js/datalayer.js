@@ -19,21 +19,14 @@
     var dataLayer = window.dataLayer = window.dataLayer || [];
 
     dataLayer.push({
-        on: "clicked:listItem",
+        on: "datalayer:change",
         handler: function(event) {
             console.log(event)
         }
     });
 
     dataLayer.push({
-        on: "accordion:expanded",
-        handler: function(event) {
-            console.log(event)
-        }
-    });
-
-    dataLayer.push({
-        on: "accordion:collapsed",
+        on: "datalayer:event",
         handler: function(event) {
             console.log(event)
         }
@@ -63,10 +56,8 @@
         var element = event.currentTarget;
         var elementData = getClickData(element);
 
-        console.log("addClickToDataLayer", elementData);
-
         dataLayer.push({
-            event: 'clicked:' + elementData.type,
+            event: elementData.type+':clicked',
             info: elementData
         });
     }
@@ -81,8 +72,13 @@
     }
 
     function getClickData(element) {
-        var clickDataJson = element.dataset.cmpClickable;
-        return JSON.parse(clickDataJson);
+        if(element.dataset.cmpDataLayer) {
+            return JSON.parse(element.dataset.cmpDataLayer);
+        }
+
+        var componentElement = element.closest('[data-cmp-data-layer]');
+
+        return JSON.parse(componentElement.dataset.cmpDataLayer);
     }
 
     function onDocumentReady() {
