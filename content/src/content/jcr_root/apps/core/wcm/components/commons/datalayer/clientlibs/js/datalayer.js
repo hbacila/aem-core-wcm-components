@@ -92,6 +92,10 @@
         clickableElements.forEach(function (element) {
             attachClickEventListener(element)
         });
+
+        dataLayer.push({
+            event: "components:loaded"
+        })
     }
 
     if (document.readyState !== "loading") {
