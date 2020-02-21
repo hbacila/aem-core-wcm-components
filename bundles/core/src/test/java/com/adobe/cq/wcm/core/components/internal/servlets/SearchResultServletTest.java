@@ -48,6 +48,9 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import io.wcm.testing.mock.aem.junit.AemContext;
 
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -157,6 +160,7 @@ public class SearchResultServletTest {
         private String description;
         private String lastModified;
         private String name;
+        private String dataLayerJson;
 
         public Item() {
         }
@@ -171,6 +175,24 @@ public class SearchResultServletTest {
         @Override
         public String getTitle() {
             return title;
+        }
+
+        @Override
+        public String getDataLayerJson() {
+            JsonObjectBuilder data = Json.createObjectBuilder();
+            data.add("id", path);
+            data.add("type", "resourceListItem");
+
+            if (name != null)
+                data.add("name", name);
+
+            if (title != null)
+                data.add("title", title);
+
+            if (getURL() != null)
+                data.add("linkUrl", getURL());
+
+            return  data.build().toString();
         }
     }
 }

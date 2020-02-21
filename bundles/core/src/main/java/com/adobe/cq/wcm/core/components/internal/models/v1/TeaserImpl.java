@@ -279,7 +279,10 @@ public class TeaserImpl extends AbstractImageDelegatingModel implements Teaser {
         JsonObjectBuilder data = Json.createObjectBuilder();
         data.add("id", resource.getPath());
         data.add("type", "teaser");
-        data.add("title", getTitle());
+
+        if (getTitle() != null)
+            data.add("title", getTitle());
+
         return  data.build().toString();
     }
 
@@ -326,8 +329,12 @@ public class TeaserImpl extends AbstractImageDelegatingModel implements Teaser {
             JsonObjectBuilder data = Json.createObjectBuilder();
             data.add("id", getPath());
             data.add("type", "teaserActionItem");
-            data.add("title", getTitle());
-            data.add("linkUrl", getURL());
+
+            if (getTitle() != null)
+                data.add("title", getTitle());
+
+            if (getURL() != null)
+                data.add("linkUrl", getURL());
 
 
             return  data.build().toString();

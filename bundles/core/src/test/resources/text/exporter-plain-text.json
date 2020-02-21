@@ -1,5 +1,6 @@
 {
     "text": "plain",
+    "dataLayerJson": "{\"id\":\"/content/text/plain-text\",\"type\":\"text\",\"text\":\"plain\"}",
     "richText": false,
     ":type": "core/wcm/components/text/v1/text"
 }

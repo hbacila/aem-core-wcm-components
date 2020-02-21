@@ -97,6 +97,9 @@ public class ResourceListItemImpl implements ListItem {
         if (getTitle() != null)
             data.add("title", getTitle());
 
+        if (getURL() != null)
+            data.add("linkUrl", getURL());
+
         return  data.build().toString();
     }
 

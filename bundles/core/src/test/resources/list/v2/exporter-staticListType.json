@@ -6,6 +6,7 @@
             "path": "/content/list/pages/page_1",
             "title": "Page 1",
             "description": null,
+            "dataLayerJson": "{\"id\":\"/content/list/pages/page_1\",\"type\":\"listItem\",\"text\":\"Page 1\",\"linkUrl\":\"/context/content/list/pages/page_1.html\"}",
             "lastModified": 1474672365000
         },
         {
@@ -13,11 +14,13 @@
             "path": "/content/list/pages/page_2",
             "title": "Page 2",
             "description": null,
+            "dataLayerJson": "{\"id\":\"/content/list/pages/page_2\",\"type\":\"listItem\",\"text\":\"Page 2\",\"linkUrl\":\"/context/content/list/pages/page_2.html\"}",
             "lastModified": 1474499565000
         }
     ],
     "showDescription": true,
     "showModificationDate": true,
     "linkItems": true,
+    "dataLayerJson": "{\"id\":\"/content/list/listTypes/staticListType\",\"type\":\"list\",\"itemCount\":2}",
     ":type": "core/wcm/components/list/v2/list"
 }

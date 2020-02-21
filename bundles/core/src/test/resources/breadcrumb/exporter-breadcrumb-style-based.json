@@ -3,8 +3,10 @@
         {
             "url"   : "/content/breadcrumb/women/shirts/devi-sleeveless-shirt.html",
             "title" : "Devi Sleeveless Shirt",
+            "dataLayerJson": "{\"id\":\"/content/breadcrumb/women/shirts/devi-sleeveless-shirt\",\"type\":\"breadcrumbItem\",\"name\":\"devi-sleeveless-shirt\",\"title\":\"Devi Sleeveless Shirt\",\"linkUrl\":\"/content/breadcrumb/women/shirts/devi-sleeveless-shirt.html\"}",
             "active": true
         }
     ],
+    "dataLayerJson": "{\"id\":\"/content/breadcrumb/women/shirts/devi-sleeveless-shirt/jcr:content/header/breadcrumb-style-based\",\"type\":\"breadcrumb\",\"itemCount\":1}",
     ":type": "core/wcm/components/breadcrumb"
 }

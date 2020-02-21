@@ -8,9 +8,10 @@
     ":type"           : "core/wcm/components/page/v1/page",
     ":items"          : {
         "text": {
-            "text"    : "<p>This is a test</p>",
-            "richText": true,
-            ":type"   : "core/wcm/components/text/v1/text"
+            "text"          : "<p>This is a test</p>",
+            "dataLayerJson" : "{\"id\":\"/content/page/templated-page/jcr:content/text\",\"type\":\"text\",\"text\":\"<p>This is a test</p>\"}",
+            "richText"      : true,
+            ":type"         : "core/wcm/components/text/v1/text"
         }
     },
     ":itemsOrder"     : [

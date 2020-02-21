@@ -7,6 +7,7 @@
       "active": true,
       "children": [],
       "level": 0,
+      "dataLayerJson": "{\"id\":\"/content/languagenavigation/LOCALE-1/LOCALE-5/about\",\"type\":\"languageNavigationItem\",\"name\":\"about\",\"title\":\"LOCALE 1\",\"linkUrl\":\"/core/content/languagenavigation/LOCALE-1/LOCALE-5/about.html\"}",
       "url": "/core/content/languagenavigation/LOCALE-1/LOCALE-5/about.html",
       "title": "LOCALE 1",
       "locale": "en_US",
@@ -20,6 +21,7 @@
       "active": false,
       "children": [],
       "level": 0,
+      "dataLayerJson": "{\"id\":\"/content/languagenavigation/LOCALE-2/LOCALE-5/about\",\"type\":\"languageNavigationItem\",\"name\":\"about\",\"title\":\"LOCALE 2\",\"linkUrl\":\"/core/content/languagenavigation/LOCALE-2/LOCALE-5/about.html\"}",
       "url": "/core/content/languagenavigation/LOCALE-2/LOCALE-5/about.html",
       "title": "LOCALE 2",
       "locale": "en_CA",
@@ -33,6 +35,7 @@
       "active": false,
       "children": [],
       "level": 0,
+      "dataLayerJson": "{\"id\":\"/content/languagenavigation/LOCALE-3\",\"type\":\"languageNavigationItem\",\"name\":\"LOCALE-3\",\"title\":\"LOCALE 3\",\"linkUrl\":\"/core/LOCALE-3-vanity\"}",
       "url": "/core/LOCALE-3-vanity",
       "title": "LOCALE 3",
       "locale": "de_CH",
@@ -46,6 +49,7 @@
       "active": false,
       "children": [],
       "level": 0,
+      "dataLayerJson": "{\"id\":\"/content/languagenavigation/LOCALE-4\",\"type\":\"languageNavigationItem\",\"name\":\"LOCALE-4\",\"title\":\"LOCALE 4\",\"linkUrl\":\"/core/content/languagenavigation/LOCALE-4.html\"}",
       "url": "/core/content/languagenavigation/LOCALE-4.html",
       "title": "LOCALE 4",
       "locale": "de_DE",
@@ -53,5 +57,6 @@
       "language": "de-DE"
     }
   ],
+  "dataLayerJson": "{\"id\":\"/content/languagenavigation/LOCALE-1/LOCALE-5/about/jcr:content/root/languagenavigation-component-1\",\"type\":\"languageNavigation\",\"itemCount\":4}",
   ":type": "core/wcm/components/languagenavigation/v1/languagenavigation"
 }

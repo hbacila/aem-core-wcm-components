@@ -142,7 +142,9 @@ public class TitleImpl implements Title {
         JsonObjectBuilder titleData = Json.createObjectBuilder();
         titleData.add("id", resource.getPath());
         titleData.add("type", "title");
-        titleData.add("text", getText());
+
+        if (getText() != null)
+            titleData.add("text", getText());
 
         if (getLinkURL() != null)
             titleData.add("linkUrl", getLinkURL());

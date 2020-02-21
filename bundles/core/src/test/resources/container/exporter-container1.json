@@ -14,6 +14,7 @@
             "imageLinkHidden": false,
             "titleLinkHidden": false,
             "actions"        : [],
+            "dataLayerJson"  : "{\"id\":\"/content/container/jcr:content/root/responsivegrid/container-1/item_1\",\"type\":\"teaser\",\"title\":\"Teaser 1\"}",
             ":type"          : "core/wcm/components/teaser/v1/teaser"
         },
         "item_2": {
@@ -23,6 +24,7 @@
             "imageLinkHidden": false,
             "titleLinkHidden": false,
             "actions"        : [],
+            "dataLayerJson"  : "{\"id\":\"/content/container/jcr:content/root/responsivegrid/container-1/item_2\",\"type\":\"teaser\",\"title\":\"Teaser 2\"}",
             ":type"          : "core/wcm/components/teaser/v1/teaser"
         }
     },

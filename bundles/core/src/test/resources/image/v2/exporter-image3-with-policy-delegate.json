@@ -9,5 +9,6 @@
     "alt"                   : "Adobe Logo",
     "link"                  : "https://www.adobe.com",
     "src"                   : "/core/content/test/_jcr_content/root/image3.coreimg.82.600.png?contentPolicyDelegatePath=/content/test/jcr:content/root/image0",
+    "dataLayerJson"         : "{\"id\":\"/content/test/jcr:content/root/image3\",\"type\":\"image\",\"src\":\"/core/content/test/_jcr_content/root/image3.coreimg.82.600.png?contentPolicyDelegatePath=/content/test/jcr:content/root/image0\",\"name\":\"Adobe Logo\",\"asset\":{},\"linkUrl\":\"https://www.adobe.com\"}",
     ":type"                 : "core/wcm/components/image/v2/image"
 }

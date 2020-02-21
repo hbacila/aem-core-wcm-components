@@ -5,5 +5,6 @@
     "lazyEnabled"           : false,
     "title"                 : "Adobe Systems Logo and Wordmark",
     "src"                   : "/core/content/test/_jcr_content/root/image4.coreimg.png/1494867377756/adobe-systems-logo-and-wordmark.png",
+    "dataLayerJson"         : "{\"id\":\"/content/test/jcr:content/root/image4\",\"type\":\"image\",\"src\":\"/core/content/test/_jcr_content/root/image4.coreimg.png/1494867377756/adobe-systems-logo-and-wordmark.png\",\"name\":\"Adobe Systems Logo and Wordmark\",\"asset\":{\"id\":\"60a1a56e-f3f4-4021-a7bf-ac7a51f0ffe5\",\"name\":\"Adobe_Systems_logo_and_wordmark.png\",\"path\":\"/content/dam/core/images/Adobe_Systems_logo_and_wordmark.png\",\"type\":\"image/png\",\"url\":\"https://\",\"tags\":{\"\":1}}}",
     ":type"                 : "core/wcm/components/image/v2/image"
 }

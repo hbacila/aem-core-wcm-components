@@ -1,5 +1,6 @@
 {
     "activeItem": "item_2",
+    "dataLayerJson": "{\"id\":\"/content/tabs/jcr:content/root/responsivegrid/tabs-2\",\"type\":\"tabs\",\"itemCount\":2,\"activeItem\":\"item_2\"}",
     ":itemsOrder": [
         "item_1",
         "item_2"
@@ -20,10 +21,12 @@
                     "imageLinkHidden": false,
                     "titleLinkHidden": false,
                     "actions": [],
+                    "dataLayerJson": "{\"id\":\"/content/tabs/jcr:content/root/responsivegrid/tabs-2/item_1/item_1_1\",\"type\":\"teaser\",\"title\":\"Teaser 1\"}",
                     ":type": "core/wcm/components/teaser/v1/teaser"
                 },
                 "item_1_2": {
                     "activeItem": "item_1_2_2",
+                    "dataLayerJson": "{\"id\":\"/content/tabs/jcr:content/root/responsivegrid/tabs-2/item_1/item_1_2\",\"type\":\"tabs\",\"itemCount\":2,\"activeItem\":\"item_1_2_2\"}",
                     ":itemsOrder": [
                         "item_1_2_1",
                         "item_1_2_2"
@@ -44,6 +47,7 @@
                                     "imageLinkHidden": false,
                                     "titleLinkHidden": false,
                                     "actions": [],
+                                    "dataLayerJson": "{\"id\":\"/content/tabs/jcr:content/root/responsivegrid/tabs-2/item_1/item_1_2/item_1_2_1/item_1_2_1_1\",\"type\":\"teaser\",\"title\":\"Teaser 1\"}",
                                     ":type": "core/wcm/components/teaser/v1/teaser"
                                 },
                                 "item_1_2_1_2": {
@@ -53,6 +57,7 @@
                                     "imageLinkHidden": false,
                                     "titleLinkHidden": false,
                                     "actions": [],
+                                    "dataLayerJson": "{\"id\":\"/content/tabs/jcr:content/root/responsivegrid/tabs-2/item_1/item_1_2/item_1_2_1/item_1_2_1_2\",\"type\":\"teaser\",\"title\":\"Teaser 2\"}",
                                     ":type": "core/wcm/components/teaser/v1/teaser"
                                 }
                             },
@@ -72,6 +77,7 @@
                                     "imageLinkHidden": false,
                                     "titleLinkHidden": false,
                                     "actions": [],
+                                    "dataLayerJson": "{\"id\":\"/content/tabs/jcr:content/root/responsivegrid/tabs-2/item_1/item_1_2/item_1_2_2/item_1_2_2_1\",\"type\":\"teaser\",\"title\":\"Teaser 1\"}",
                                     ":type": "core/wcm/components/teaser/v1/teaser"
                                 },
                                 "item_1_2_2_2": {
@@ -83,6 +89,7 @@
                                         "item_1_2_2_2_2",
                                         "item_1_2_2_2_3"
                                     ],
+                                    "dataLayerJson": "{\"id\":\"/content/tabs/jcr:content/root/responsivegrid/tabs-2/item_1/item_1_2/item_1_2_2/item_1_2_2_2\",\"type\":\"carousel\",\"itemCount\":3}",
                                     ":type": "core/wcm/components/carousel/v1/carousel",
                                     ":items": {
                                         "item_1_2_2_2_1": {
@@ -92,6 +99,7 @@
                                             "imageLinkHidden": false,
                                             "titleLinkHidden": false,
                                             "actions": [],
+                                            "dataLayerJson": "{\"id\":\"/content/tabs/jcr:content/root/responsivegrid/tabs-2/item_1/item_1_2/item_1_2_2/item_1_2_2_2/item_1_2_2_2_1\",\"type\":\"teaser\",\"title\":\"Teaser 1\"}",
                                             ":type": "core/wcm/components/teaser/v1/teaser",
                                             "cq:panelTitle": "Teaser 1"
                                         },
@@ -102,6 +110,7 @@
                                             "imageLinkHidden": false,
                                             "titleLinkHidden": false,
                                             "actions": [],
+                                            "dataLayerJson": "{\"id\":\"/content/tabs/jcr:content/root/responsivegrid/tabs-2/item_1/item_1_2/item_1_2_2/item_1_2_2_2/item_1_2_2_2_2\",\"type\":\"teaser\",\"title\":\"Teaser 2\"}",
                                             ":type": "core/wcm/components/teaser/v1/teaser",
                                             "cq:panelTitle": "Teaser 2"
                                         },
@@ -112,6 +121,7 @@
                                             "imageLinkHidden": false,
                                             "titleLinkHidden": false,
                                             "actions": [],
+                                            "dataLayerJson": "{\"id\":\"/content/tabs/jcr:content/root/responsivegrid/tabs-2/item_1/item_1_2/item_1_2_2/item_1_2_2_2/item_1_2_2_2_3\",\"type\":\"teaser\",\"title\":\"Teaser 3\"}",
                                             ":type": "core/wcm/components/teaser/v1/teaser",
                                             "cq:panelTitle": "Teaser 3"
                                         }
@@ -139,6 +149,7 @@
                     "imageLinkHidden": false,
                     "titleLinkHidden": false,
                     "actions": [],
+                    "dataLayerJson": "{\"id\":\"/content/tabs/jcr:content/root/responsivegrid/tabs-2/item_2/item_2_1\",\"type\":\"teaser\",\"title\":\"Teaser 1\"}",
                     ":type": "core/wcm/components/teaser/v1/teaser"
                 },
                 "item_2_2": {
@@ -148,6 +159,7 @@
                     "imageLinkHidden": false,
                     "titleLinkHidden": false,
                     "actions": [],
+                    "dataLayerJson": "{\"id\":\"/content/tabs/jcr:content/root/responsivegrid/tabs-2/item_2/item_2_2\",\"type\":\"teaser\",\"title\":\"Teaser 2\"}",
                     ":type": "core/wcm/components/teaser/v1/teaser"
                 }
             },
