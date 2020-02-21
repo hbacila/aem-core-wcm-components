@@ -4,7 +4,7 @@
     "lastModifiedDate": 1453282416000,
     "templateName"    : "product-page",
     "appResourcesPath": "/core/etc.clientlibs/wcm/core/page/clientlibs/favicon/resources",
-    "dataLayerJson"   : "{\"id\":\"/content/page/templated-page\",\"type\":\"page\",\"language\":\"en-GB\",\"name\":\"Templated Page\"}",
+    "dataLayerJson"   : "{\"id\":\"/content/page/templated-page\",\"type\":\"page\",\"language\":\"en-GB\",\"name\":\"Templated Page\",\"template\":\"/conf/coretest/settings/wcm/templates/product-page\"}",
     "cssClassNames"   : "class1 class2",
     "language"        : "en-GB",
     ":itemsOrder"     : [
