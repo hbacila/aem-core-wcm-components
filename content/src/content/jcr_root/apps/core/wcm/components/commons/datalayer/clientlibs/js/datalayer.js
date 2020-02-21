@@ -18,20 +18,6 @@
 
     var dataLayer = window.dataLayer = window.dataLayer || [];
 
-    dataLayer.push({
-        on: "datalayer:change",
-        handler: function(event) {
-            console.log(event)
-        }
-    });
-
-    dataLayer.push({
-        on: "datalayer:event",
-        handler: function(event) {
-            console.log(event)
-        }
-    });
-
     function addComponentToDataLayer(component) {
         var componentData = getComponentData(component);
         dataLayer.push({
@@ -92,6 +78,10 @@
         clickableElements.forEach(function (element) {
             attachClickEventListener(element)
         });
+
+        dataLayer.push({
+            event: "components:loaded"
+        })
     }
 
     if (document.readyState !== "loading") {

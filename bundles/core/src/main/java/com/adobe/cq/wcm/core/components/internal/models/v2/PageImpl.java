@@ -207,6 +207,7 @@ public class PageImpl extends com.adobe.cq.wcm.core.components.internal.models.v
         pageData.add("type", "page");
         pageData.add("language", getLanguage());
         pageData.add("name", getTitle());
+        pageData.add("template", currentPage.getTemplate().getPath());
         return  pageData.build().toString();
     }
 }
