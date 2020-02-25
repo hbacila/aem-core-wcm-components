@@ -26,7 +26,7 @@ import org.osgi.annotation.versioning.ConsumerType;
  * @since com.adobe.cq.wcm.core.components.models 12.2.0
  */
 @ConsumerType
-public interface ListItem {
+public interface ListItem extends DataLayerProvider {
 
     /**
      * Returns the URL of this {@code ListItem}.
@@ -91,10 +91,6 @@ public interface ListItem {
      */
     @Nullable
     default String getName() {
-        throw new UnsupportedOperationException();
-    }
-
-    default String getDataLayerJson() {
         throw new UnsupportedOperationException();
     }
 }

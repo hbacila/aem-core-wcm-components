@@ -72,10 +72,4 @@ public interface NavigationItem extends ListItem {
     default int getLevel() {
         throw new UnsupportedOperationException();
     }
-
-    default String getDataLayerJson() {
-        throw new UnsupportedOperationException();
-    }
-
-
 }

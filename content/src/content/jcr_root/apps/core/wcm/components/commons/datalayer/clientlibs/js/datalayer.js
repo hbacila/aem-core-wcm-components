@@ -19,10 +19,9 @@
     var dataLayer = window.dataLayer = window.dataLayer || [];
 
     function addComponentToDataLayer(component) {
-        var componentData = getComponentData(component);
         dataLayer.push({
             data: {
-                component: getComponentObject(componentData)
+                component: getComponentObject(component)
             }
         });
     }
@@ -31,8 +30,14 @@
         element.addEventListener("click", addClickToDataLayer);
     }
 
-    function getComponentObject(elementData) {
+    function getComponentObject(element) {
         var component = {};
+        var elementData = getComponentData(element);
+        var parentElement = element.parentNode.closest('[data-cmp-data-layer]');
+        if (parentElement) {
+            var parentData = getComponentData(parentElement);
+            elementData.parentId = parentData.id;
+        }
         component[elementData.type] = {};
         component[elementData.type][generateUniqueID()] = elementData;
         return component;

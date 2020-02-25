@@ -26,6 +26,7 @@ import javax.json.JsonObjectBuilder;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceMetadata;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.wrappers.SlingHttpServletRequestWrapper;
 import org.apache.sling.models.annotations.Exporter;
@@ -291,9 +292,12 @@ public class TeaserImpl extends AbstractImageDelegatingModel implements Teaser {
         ValueMap properties;
         String title;
         String url;
+        String path;
         Page page;
 
         public Action(Resource actionRes) {
+            ResourceMetadata m = actionRes.getResourceMetadata();
+            path = m.getResolutionPath();
             properties = actionRes.getValueMap();
             title = properties.get(PN_ACTION_TEXT, String.class);
             url = properties.get(PN_ACTION_LINK, String.class);
@@ -327,7 +331,7 @@ public class TeaserImpl extends AbstractImageDelegatingModel implements Teaser {
         @Override
         public String getDataLayerJson() {
             JsonObjectBuilder data = Json.createObjectBuilder();
-            data.add("id", getPath());
+            data.add("id", path);
             data.add("type", "teaserActionItem");
 
             if (getTitle() != null)
@@ -335,7 +339,6 @@ public class TeaserImpl extends AbstractImageDelegatingModel implements Teaser {
 
             if (getURL() != null)
                 data.add("linkUrl", getURL());
-
 
             return  data.build().toString();
         }

@@ -28,7 +28,7 @@ import com.adobe.cq.export.json.ComponentExporter;
  * @since com.adobe.cq.wcm.core.components.models 11.0.0
  */
 @ConsumerType
-public interface Breadcrumb extends ComponentExporter {
+public interface Breadcrumb extends ComponentExporter, DataLayerProvider {
 
     /**
      * Name of the resource property that will indicate if pages that are hidden for navigation will still be displayed.
@@ -72,9 +72,4 @@ public interface Breadcrumb extends ComponentExporter {
     default String getExportedType() {
         throw new UnsupportedOperationException();
     }
-
-    default String getDataLayerJson() {
-        throw new UnsupportedOperationException();
-    }
-
 }

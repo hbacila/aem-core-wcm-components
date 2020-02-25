@@ -26,7 +26,7 @@ import com.adobe.cq.export.json.ComponentExporter;
  * @since com.adobe.cq.wcm.core.components.models 11.0.0
  */
 @ConsumerType
-public interface Text extends ComponentExporter {
+public interface Text extends ComponentExporter, DataLayerProvider {
 
     /**
      * Retrieves the text value to be displayed.
@@ -57,9 +57,4 @@ public interface Text extends ComponentExporter {
     default String getExportedType() {
         throw new UnsupportedOperationException();
     }
-
-    default String getDataLayerJson() {
-        throw new UnsupportedOperationException();
-    }
-
 }
