@@ -369,4 +369,38 @@ public class ImageImpl implements Image {
         return !StringUtils.equals(mimeType, MIME_TYPE_IMAGE_SVG);
     }
 
+    /*
+     * DataLayerProvider implementation of field getters
+     */
+
+    @Override
+    public Resource getAssetResource() {
+        return resource.getResourceResolver().getResource(fileReference);
+    }
+
+    @Override
+    public String getDataLayerId() {
+        return resource.getPath();
+    }
+
+    @Override
+    public String getDataLayerType() {
+        return "image";
+    }
+
+    @Override
+    public String getDataLayerSrc() {
+        return src;
+    }
+
+    @Override
+    public String getDataLayerName() {
+        return title;
+    }
+
+    @Override
+    public String getDataLayerLinkUrl() {
+        return getLink();
+    }
+
 }

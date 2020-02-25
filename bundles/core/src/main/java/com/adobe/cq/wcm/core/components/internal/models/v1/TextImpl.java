@@ -16,8 +16,6 @@
 package com.adobe.cq.wcm.core.components.internal.models.v1;
 
 import javax.inject.Inject;
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -67,17 +65,23 @@ public class TextImpl implements Text {
         return resource.getResourceType();
     }
 
+    /*
+     * DataLayerProvider implementation of field getters
+     */
+
     @Override
-    public String getDataLayerJson() {
-        JsonObjectBuilder data = Json.createObjectBuilder();
-        data.add("id", resource.getPath());
-        data.add("type", "text");
+    public String getDataLayerId() {
+        return resource.getPath();
+    }
 
-        if (getText() != null)
-            data.add("text", getText().length() > 100 ? getText().substring(0, 100) : getText());
-        else
-            data.addNull("text");
+    @Override
+    public String getDataLayerType() {
+        return "text";
+    }
 
-        return  data.build().toString();
+    @Override
+    public String getDataLayerText() {
+        String text = getText();
+        return text.length() > 100 ? text.substring(0, 100) : text;
     }
 }

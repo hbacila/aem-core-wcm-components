@@ -27,9 +27,6 @@ import com.adobe.cq.export.json.ContainerExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Tabs;
 
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
-
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {Tabs.class, ComponentExporter.class, ContainerExporter.class}, resourceType = TabsImpl.RESOURCE_TYPE)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class TabsImpl extends PanelContainerImpl implements Tabs {
@@ -60,16 +57,32 @@ public class TabsImpl extends PanelContainerImpl implements Tabs {
         return accessibilityLabel;
     }
 
+    /*
+     * DataLayerProvider implementation of field getters
+     */
+
     @Override
-    public String getDataLayerJson() {
-        JsonObjectBuilder data = Json.createObjectBuilder();
-        data.add("id", resource.getPath());
-        data.add("type", "tabs");
-        data.add("itemCount", getItems().size());
+    public String getDataLayerId() {
+        return resource.getPath();
+    }
 
-        if(getActiveItem() != null)
-            data.add("activeItem", getActiveItem());
+    @Override
+    public String getDataLayerType() {
+        return "tabs";
+    }
 
-        return  data.build().toString();
+    @Override
+    public String getDataLayerName() {
+        return resource.getName();
+    }
+
+    @Override
+    public String getDataLayerActiveItem() {
+        return getActiveItem();
+    }
+
+    @Override
+    public int getDataLayerItemsCount() {
+        return getItems().size();
     }
 }

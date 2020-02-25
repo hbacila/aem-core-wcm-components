@@ -20,9 +20,6 @@ import java.util.Collections;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -275,17 +272,30 @@ public class TeaserImpl extends AbstractImageDelegatingModel implements Teaser {
         return request.getResource().getResourceType();
     }
 
+    /*
+     * DataLayerProvider implementation of field getters
+     */
+
     @Override
-    public String getDataLayerJson() {
-        JsonObjectBuilder data = Json.createObjectBuilder();
-        data.add("id", resource.getPath());
-        data.add("type", "teaser");
-
-        if (getTitle() != null)
-            data.add("title", getTitle());
-
-        return  data.build().toString();
+    public String getDataLayerId() {
+        return resource.getPath();
     }
+
+    @Override
+    public String getDataLayerType() {
+        return "teaser";
+    }
+
+    @Override
+    public String getDataLayerName() {
+        return resource.getName();
+    }
+
+    @Override
+    public String getDataLayerTitle() {
+        return getTitle();
+    }
+
 
     @JsonIgnoreProperties({"path", "description", "lastModified", "name"})
     public class Action implements ListItem {
@@ -328,19 +338,28 @@ public class TeaserImpl extends AbstractImageDelegatingModel implements Teaser {
             }
         }
 
+        /*
+         * DataLayerProvider implementation of field getters
+         */
+
         @Override
-        public String getDataLayerJson() {
-            JsonObjectBuilder data = Json.createObjectBuilder();
-            data.add("id", path);
-            data.add("type", "teaserActionItem");
+        public String getDataLayerId() {
+            return path;
+        }
 
-            if (getTitle() != null)
-                data.add("title", getTitle());
+        @Override
+        public String getDataLayerType() {
+            return "teaserActionItem";
+        }
 
-            if (getURL() != null)
-                data.add("linkUrl", getURL());
+        @Override
+        public String getDataLayerLinkUrl() {
+            return getURL();
+        }
 
-            return  data.build().toString();
+        @Override
+        public String getDataLayerTitle() {
+            return getTitle();
         }
     }
 }

@@ -17,8 +17,6 @@
 package com.adobe.cq.wcm.core.components.internal.models.v1;
 
 import javax.annotation.PostConstruct;
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -137,19 +135,27 @@ public class TitleImpl implements Title {
         return resource.getResourceType();
     }
 
+    /*
+     * DataLayerProvider implementation of field getters
+     */
+
     @Override
-    public String getDataLayerJson() {
-        JsonObjectBuilder titleData = Json.createObjectBuilder();
-        titleData.add("id", resource.getPath());
-        titleData.add("type", "title");
-
-        if (getText() != null)
-            titleData.add("text", getText());
-
-        if (getLinkURL() != null)
-            titleData.add("linkUrl", getLinkURL());
-
-        return  titleData.build().toString();
+    public String getDataLayerId() {
+        return resource.getPath();
     }
 
+    @Override
+    public String getDataLayerType() {
+        return "title";
+    }
+
+    @Override
+    public String getDataLayerLinkUrl() {
+        return getLinkURL();
+    }
+
+    @Override
+    public String getDataLayerText() {
+        return getText();
+    }
 }

@@ -27,9 +27,6 @@ import org.slf4j.LoggerFactory;
 import com.adobe.cq.wcm.core.components.models.ListItem;
 import com.day.cq.commons.jcr.JcrConstants;
 
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
-
 public class ResourceListItemImpl implements ListItem {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ResourceListItemImpl.class);
@@ -84,23 +81,32 @@ public class ResourceListItemImpl implements ListItem {
         return name;
     }
 
+    /*
+     * DataLayerProvider implementation of field getters
+     */
 
     @Override
-    public String getDataLayerJson() {
-        JsonObjectBuilder data = Json.createObjectBuilder();
-        data.add("id", path);
-        data.add("type", "resourceListItem");
-
-        if (getName() != null)
-            data.add("name", getName());
-
-        if (getTitle() != null)
-            data.add("title", getTitle());
-
-        if (getURL() != null)
-            data.add("linkUrl", getURL());
-
-        return  data.build().toString();
+    public String getDataLayerId() {
+        return getPath();
     }
 
+    @Override
+    public String getDataLayerType() {
+        return "resourceListItem";
+    }
+
+    @Override
+    public String getDataLayerName() {
+        return getName();
+    }
+
+    @Override
+    public String getDataLayerTitle() {
+        return getTitle();
+    }
+
+    @Override
+    public String getDataLayerLinkUrl() {
+        return getURL();
+    }
 }

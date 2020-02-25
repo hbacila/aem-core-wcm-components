@@ -15,12 +15,77 @@
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 package com.adobe.cq.wcm.core.components.models;
 
+import com.adobe.cq.wcm.core.components.internal.DataLayerFactory;
+import org.apache.sling.api.resource.Resource;
 import org.osgi.annotation.versioning.ConsumerType;
 
 @ConsumerType
 public interface DataLayerProvider {
 
+    default boolean isDataLayerEnabled() {
+        return true;
+    }
+
+    default Resource getAssetResource() {
+        return null;
+    }
+
+    default String getDataLayerId() {
+        return null;
+    }
+
+    default String getDataLayerType() {
+        return null;
+    }
+
+    default String getDataLayerSrc() {
+        return null;
+    }
+
+    default String getDataLayerName() {
+        return null;
+    }
+
+    default String getDataLayerTitle() {
+        return null;
+    }
+
+    default String getDataLayerText() {
+        return null;
+    }
+
+    default String getDataLayerTags() {
+        return null;
+    }
+
+    default String getDataLayerLinkUrl() {
+        return null;
+    }
+
+    default String getDataLayerTemplate() {
+        return null;
+    }
+
+    default String getDataLayerLanguage() {
+        return null;
+    }
+
+    default String[] getDataLayerExpandedItems() {
+        return null;
+    }
+
+    default String getDataLayerActiveItem() {
+        return null;
+    }
+
+    default int getDataLayerItemsCount() {
+        return -1;
+    }
+
     default String getDataLayerJson() {
+        if (isDataLayerEnabled()) {
+            return DataLayerFactory.build(this);
+        }
         throw new UnsupportedOperationException();
     }
 }

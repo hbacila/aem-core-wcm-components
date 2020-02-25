@@ -18,14 +18,10 @@ package com.adobe.cq.wcm.core.components.internal.models.v2;
 import java.util.*;
 
 import javax.annotation.PostConstruct;
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.jetbrains.annotations.NotNull;
@@ -187,53 +183,5 @@ public class ImageImpl extends com.adobe.cq.wcm.core.components.internal.models.
     @Override
     public String getUuid() {
         return uuid;
-    }
-
-    @Override
-    public String getDataLayerJson() {
-        JsonObjectBuilder imageData = Json.createObjectBuilder();
-        imageData.add("id", resource.getPath());
-        imageData.add("type", "image");
-        imageData.add("src", src);
-
-        if(title != null)
-            imageData.add("name", title);
-
-        if(this.getAssetMetadata() != null)
-            imageData.add("asset", this.getAssetMetadata());
-
-        if (getLink() != null)
-            imageData.add("linkUrl", getLink());
-
-        return  imageData.build().toString();
-    }
-
-    private JsonObject getAssetMetadata() {
-        JsonObjectBuilder assetMetadata = Json.createObjectBuilder();
-        Resource assetResource = resource.getResourceResolver().getResource(fileReference);
-        if (assetResource != null) {
-            Asset asset = assetResource.adaptTo(Asset.class);
-            if (asset != null) {
-                assetMetadata.add("id", asset.getID());
-                assetMetadata.add("name", asset.getName());
-                assetMetadata.add("path", asset.getPath());
-                assetMetadata.add("type", asset.getMimeType());
-                assetMetadata.add("url", "https://"); // aboslute URL
-                assetMetadata.add("tags", this.getAssetTags(asset));
-            }
-        }
-        return assetMetadata.build();
-    }
-
-    private JsonObject getAssetTags(Asset asset) {
-        JsonObjectBuilder assetTags = Json.createObjectBuilder();
-        String tagsValue = asset.getMetadataValueFromJcr("cq:tags");
-        if (tagsValue != null) {
-            String[] tags = tagsValue.split(",");
-            for (String tag : tags) {
-                assetTags.add(tag, 1);
-            }
-        }
-        return assetTags.build();
     }
 }

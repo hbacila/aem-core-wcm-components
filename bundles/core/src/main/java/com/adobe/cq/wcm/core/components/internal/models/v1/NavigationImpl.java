@@ -24,8 +24,6 @@ import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 import javax.jcr.RangeIterator;
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -268,14 +266,30 @@ public class NavigationImpl implements Navigation {
         return null;
     }
 
+    /*
+     * DataLayerProvider implementation of field getters
+     */
+
     @Override
-    public String getDataLayerJson() {
-        JsonObjectBuilder data = Json.createObjectBuilder();
-        data.add("id", request.getResource().getPath());
-        data.add("type", "navigation");
-        data.add("itemCount", getItems().size());
-        return  data.build().toString();
+    public String getDataLayerId() {
+        return request.getResource().getPath();
     }
+
+    @Override
+    public String getDataLayerType() {
+        return "navigation";
+    }
+
+    @Override
+    public String getDataLayerName() {
+        return request.getResource().getName();
+    }
+
+    @Override
+    public int getDataLayerItemsCount() {
+        return getItems().size();
+    }
+
 
     private class NavigationRoot {
         final Page page;

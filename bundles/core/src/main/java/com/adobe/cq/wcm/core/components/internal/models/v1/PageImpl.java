@@ -292,4 +292,33 @@ public class PageImpl implements Page {
             Collections.addAll(categories, currentStyle.get(PN_CLIENTLIBS, ArrayUtils.EMPTY_STRING_ARRAY));
         }
     }
+
+    /*
+     * DataLayerProvider implementation of field getters
+     */
+
+    @Override
+    public String getDataLayerId() {
+        return currentPage.getPath();
+    }
+
+    @Override
+    public String getDataLayerType() {
+        return "page";
+    }
+
+    @Override
+    public String getDataLayerName() {
+        return getTitle();
+    }
+
+    @Override
+    public String getDataLayerTemplate() {
+        return currentPage.getTemplate().getPath();
+    }
+
+    @Override
+    public String getDataLayerLanguage() {
+        return getLanguage();
+    }
 }

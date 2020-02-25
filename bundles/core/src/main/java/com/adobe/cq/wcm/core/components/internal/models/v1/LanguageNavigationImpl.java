@@ -20,8 +20,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -142,12 +140,27 @@ public class LanguageNavigationImpl implements LanguageNavigation {
         return localizedPage;
     }
 
+    /*
+     * DataLayerProvider implementation of field getters
+     */
+
     @Override
-    public String getDataLayerJson() {
-        JsonObjectBuilder data = Json.createObjectBuilder();
-        data.add("id", request.getResource().getPath());
-        data.add("type", "languageNavigation");
-        data.add("itemCount", getItems().size());
-        return  data.build().toString();
+    public String getDataLayerId() {
+        return request.getResource().getPath();
+    }
+
+    @Override
+    public String getDataLayerType() {
+        return "languageNavigation";
+    }
+
+    @Override
+    public String getDataLayerName() {
+        return request.getResource().getName();
+    }
+
+    @Override
+    public int getDataLayerItemsCount() {
+        return getItems().size();
     }
 }

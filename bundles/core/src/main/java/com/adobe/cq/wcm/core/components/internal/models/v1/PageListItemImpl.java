@@ -32,9 +32,6 @@ import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
-
 public class PageListItemImpl implements ListItem {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PageListItemImpl.class);
@@ -110,14 +107,32 @@ public class PageListItemImpl implements ListItem {
         return result;
     }
 
+    /*
+     * DataLayerProvider implementation of field getters
+     */
+
     @Override
-    public String getDataLayerJson() {
-        JsonObjectBuilder data = Json.createObjectBuilder();
-        data.add("id", page.getPath());
-        data.add("type", "listItem");
-        data.add("text", getTitle());
-        data.add("linkUrl", getURL());
-        return  data.build().toString();
+    public String getDataLayerId() {
+        return getPath();
+    } // or page.getPath() ?
+
+    @Override
+    public String getDataLayerType() {
+        return "pageListItem";
     }
 
+    @Override
+    public String getDataLayerName() {
+        return getName();
+    }
+
+    @Override
+    public String getDataLayerText() {
+        return getTitle();
+    }
+
+    @Override
+    public String getDataLayerLinkUrl() {
+        return getURL();
+    }
 }

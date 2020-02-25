@@ -32,9 +32,6 @@ import com.adobe.cq.wcm.core.components.models.ListItem;
 import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
-
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {List.class, ComponentExporter.class}, resourceType = ListImpl.RESOURCE_TYPE)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class ListImpl extends com.adobe.cq.wcm.core.components.internal.models.v1.ListImpl implements List {
@@ -65,14 +62,4 @@ public class ListImpl extends com.adobe.cq.wcm.core.components.internal.models.v
         }
         return listItems;
     }
-
-    @Override
-    public String getDataLayerJson() {
-        JsonObjectBuilder data = Json.createObjectBuilder();
-        data.add("id", resource.getPath());
-        data.add("type", "list");
-        data.add("itemCount", getListItems().size());
-        return  data.build().toString();
-    }
-
 }

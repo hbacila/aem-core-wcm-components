@@ -16,8 +16,6 @@
 package com.adobe.cq.wcm.core.components.internal.models.v1;
 
 import javax.inject.Named;
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.Exporter;
@@ -104,16 +102,27 @@ public class ButtonImpl implements Button {
         return request.getResource().getResourceType();
     }
 
+    /*
+     * DataLayerProvider implementation of field getters
+     */
+
     @Override
-    public String getDataLayerJson() {
-        JsonObjectBuilder data = Json.createObjectBuilder();
-        data.add("id", request.getResource().getPath());
-        data.add("type", "button");
-        data.add("text", getText());
+    public String getDataLayerId() {
+        return request.getResource().getPath();
+    }
 
-        if (getLink() != null)
-            data.add("linkUrl", getLink());
+    @Override
+    public String getDataLayerType() {
+        return "button";
+    }
 
-        return  data.build().toString();
+    @Override
+    public String getDataLayerText() {
+        return getText();
+    }
+
+    @Override
+    public String getDataLayerLinkUrl() {
+        return getLink();
     }
 }

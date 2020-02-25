@@ -20,8 +20,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ValueMap;
@@ -113,12 +111,27 @@ public class BreadcrumbImpl implements Breadcrumb {
         return !page.isHideInNav() || showHidden;
     }
 
+    /*
+     * DataLayerProvider implementation of field getters
+     */
+
     @Override
-    public String getDataLayerJson() {
-        JsonObjectBuilder data = Json.createObjectBuilder();
-        data.add("id", request.getResource().getPath());
-        data.add("type", "breadcrumb");
-        data.add("itemCount", getItems().size());
-        return  data.build().toString();
+    public String getDataLayerId() {
+        return request.getResource().getPath();
+    }
+
+    @Override
+    public String getDataLayerType() {
+        return "breadcrumb";
+    }
+
+    @Override
+    public String getDataLayerName() {
+        return request.getResource().getName();
+    }
+
+    @Override
+    public int getDataLayerItemsCount() {
+        return getItems().size();
     }
 }

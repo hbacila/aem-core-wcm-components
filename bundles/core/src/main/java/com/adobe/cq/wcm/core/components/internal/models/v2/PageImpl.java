@@ -22,8 +22,6 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import javax.annotation.PostConstruct;
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -198,16 +196,5 @@ public class PageImpl extends com.adobe.cq.wcm.core.components.internal.models.v
             }
         }
         return hasCloudconfigSupport;
-    }
-
-    @Override
-    public String getDataLayerJson() {
-        JsonObjectBuilder pageData = Json.createObjectBuilder();
-        pageData.add("id", currentPage.getPath());
-        pageData.add("type", "page");
-        pageData.add("language", getLanguage());
-        pageData.add("name", getTitle());
-        pageData.add("template", currentPage.getTemplate().getPath());
-        return  pageData.build().toString();
     }
 }

@@ -24,9 +24,6 @@ import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.day.cq.wcm.api.Page;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.json.Json;
-import javax.json.JsonObjectBuilder;
-
 public class NavigationItemImpl extends PageListItemImpl implements NavigationItem {
 
     protected List<NavigationItem> children = Collections.emptyList();
@@ -62,15 +59,32 @@ public class NavigationItemImpl extends PageListItemImpl implements NavigationIt
         return level;
     }
 
+    /*
+     * DataLayerProvider implementation of field getters
+     */
+
     @Override
-    public String getDataLayerJson() {
-        JsonObjectBuilder data = Json.createObjectBuilder();
-        data.add("id", getPath());
-        data.add("type", "navigationItem");
-        data.add("name", getName());
-        data.add("title", getTitle());
-        data.add("linkUrl", getURL());
-        return  data.build().toString();
+    public String getDataLayerId() {
+        return getPath();
     }
 
+    @Override
+    public String getDataLayerType() {
+        return "navigationItem";
+    }
+
+    @Override
+    public String getDataLayerName() {
+        return getName();
+    }
+
+    @Override
+    public String getDataLayerTitle() {
+        return getTitle();
+    }
+
+    @Override
+    public String getDataLayerLinkUrl() {
+        return getURL();
+    }
 }

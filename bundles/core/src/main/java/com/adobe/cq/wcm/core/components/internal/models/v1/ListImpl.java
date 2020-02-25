@@ -315,6 +315,25 @@ public class ListImpl implements List {
         return pageManager.getContainingPage(resourceResolver.getResource(parentPath));
     }
 
+    /*
+     * DataLayerProvider implementation of field getters
+     */
+
+    @Override
+    public String getDataLayerId() {
+        return resource.getPath();
+    }
+
+    @Override
+    public String getDataLayerType() {
+        return "list";
+    }
+
+    @Override
+    public int getDataLayerItemsCount() {
+        return getListItems().size();
+    }
+
 
     protected enum Source {
         CHILDREN("children"),
