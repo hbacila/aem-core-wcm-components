@@ -43,7 +43,7 @@ import com.day.cq.wcm.api.PageManager;
     name = ExporterConstants.SLING_MODEL_EXPORTER_NAME,
     extensions = ExporterConstants.SLING_MODEL_EXTENSION
 )
-public class ButtonImpl implements Button {
+public class ButtonImpl extends AbstractDataLayerProvider implements Button {
 
     public static final String RESOURCE_TYPE = "core/wcm/components/button/v1/button";
 

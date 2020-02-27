@@ -8,16 +8,14 @@
   "actions": [
     {
       "title": "Teasers",
-      "url": "/core/content/teasers.html",
-      "dataLayerJson": "{\"id\":\"/content/teasers\",\"type\":\"teaserActionItem\",\"title\":\"Teasers\",\"linkUrl\":\"/core/content/teasers.html\"}"
+      "url": "/core/content/teasers.html"
     },
     {
       "title": "Adobe",
-      "url": "http://www.adobe.com",
-      "dataLayerJson": "{\"id\":\"http://www.adobe.com\",\"type\":\"teaserActionItem\",\"title\":\"Adobe\",\"linkUrl\":\"http://www.adobe.com\"}"
+      "url": "http://www.adobe.com"
     }
   ],
-  "dataLayerJson": "{\"id\":\"/content/teasers/jcr:content/root/responsivegrid/teaser-8\",\"type\":\"teaser\",\"title\":\"Teasers Test\"}",
   "imagePath": "/core/content/teasers/_jcr_content/root/responsivegrid/teaser-8.coreimg.png/1490005239000/adobe-systems-logo-and-wordmark.png",
+  "dataLayerJson": "{\"id\":\"/content/teasers/jcr:content/root/responsivegrid/teaser-8\",\"type\":\"teaser\",\"name\":\"teaser-8\",\"title\":\"Teasers Test\"}",
   ":type": "core/wcm/components/teaser/v1/teaser"
 }

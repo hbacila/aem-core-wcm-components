@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 import com.adobe.cq.wcm.core.components.models.ListItem;
 import com.day.cq.commons.jcr.JcrConstants;
 
-public class ResourceListItemImpl implements ListItem {
+public class ResourceListItemImpl extends AbstractDataLayerProvider implements ListItem {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ResourceListItemImpl.class);
 

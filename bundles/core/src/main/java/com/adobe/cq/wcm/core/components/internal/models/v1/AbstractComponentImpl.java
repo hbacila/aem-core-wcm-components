@@ -26,7 +26,7 @@ import com.adobe.cq.wcm.core.components.models.Component;
 /**
  * Abstract class that can be used as a base class for {@link Component} implementations.
  */
-public abstract class AbstractComponentImpl implements Component {
+public abstract class AbstractComponentImpl extends AbstractDataLayerProvider implements Component {
 
     @SlingObject
     protected Resource resource;

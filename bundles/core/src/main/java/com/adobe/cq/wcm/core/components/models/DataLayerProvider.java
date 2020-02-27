@@ -15,77 +15,89 @@
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 package com.adobe.cq.wcm.core.components.models;
 
-import com.adobe.cq.wcm.core.components.internal.DataLayerFactory;
 import org.apache.sling.api.resource.Resource;
 import org.osgi.annotation.versioning.ConsumerType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @ConsumerType
 public interface DataLayerProvider {
 
-    default boolean isDataLayerEnabled() {
-        return true;
+    @JsonIgnore
+    default boolean isDataLayerEnabled()  {
+        throw new UnsupportedOperationException();
     }
 
+    @JsonIgnore
     default Resource getAssetResource() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
-    default String getDataLayerId() {
-        return null;
+    @JsonIgnore
+    default String getDataLayerId()  {
+        throw new UnsupportedOperationException();
     }
 
+    @JsonIgnore
     default String getDataLayerType() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
-    default String getDataLayerSrc() {
-        return null;
+    @JsonIgnore
+    default String getDataLayerSrc()  {
+        throw new UnsupportedOperationException();
     }
 
+    @JsonIgnore
     default String getDataLayerName() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
+    @JsonIgnore
     default String getDataLayerTitle() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
+    @JsonIgnore
     default String getDataLayerText() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
+    @JsonIgnore
     default String getDataLayerTags() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
+    @JsonIgnore
     default String getDataLayerLinkUrl() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
+    @JsonIgnore
     default String getDataLayerTemplate() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
+    @JsonIgnore
     default String getDataLayerLanguage() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
+    @JsonIgnore
     default String[] getDataLayerExpandedItems() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
+    @JsonIgnore
     default String getDataLayerActiveItem() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
+    @JsonIgnore
     default int getDataLayerItemsCount() {
-        return -1;
+        throw new UnsupportedOperationException();
     }
 
     default String getDataLayerJson() {
-        if (isDataLayerEnabled()) {
-            return DataLayerFactory.build(this);
-        }
         throw new UnsupportedOperationException();
     }
 }

@@ -17,32 +17,79 @@ package com.adobe.cq.wcm.core.components.internal;
 
 import com.adobe.cq.wcm.core.components.models.DataLayerProvider;
 import com.day.cq.dam.api.Asset;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.sling.api.resource.Resource;
 
 import javax.json.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class DataLayerFactory {
 
     static public String build(DataLayerProvider provider) {
+
         JsonObjectBuilderWrapper data = new JsonObjectBuilderWrapper();
-        data.add("id", provider.getDataLayerId());
-        data.add( "type", provider.getDataLayerType());
-        data.add( "name", provider.getDataLayerName());
-        data.add( "title", provider.getDataLayerTitle());
-        data.add( "template", provider.getDataLayerTemplate());
-        data.add( "src", provider.getDataLayerSrc());
-        data.add( "text", provider.getDataLayerText());
-        data.add( "tags", provider.getDataLayerTags());
-        data.add( "asset", getAssetMetadata(provider));
-        data.add( "linkUrl", provider.getDataLayerLinkUrl());
-        data.add( "language", provider.getDataLayerLanguage());
-        data.add( "itemsCount", provider.getDataLayerItemsCount());
-        data.add( "activeItem", provider.getDataLayerActiveItem());
-        data.add( "expandedItems", getExpandedItems(provider));
+
+        Method[] providerMethods = DataLayerProvider.class.getMethods();
+
+        for (Method providerMethod : providerMethods) {
+            //System.out.println("methodName: " + providerMethod);
+            if (providerMethod.isAnnotationPresent(JsonIgnore.class) && providerMethod.getName().contains("getDataLayer")) {
+                String propertyName = providerMethod.getName().replace("getDataLayer", "");
+                propertyName = propertyName.substring(0, 1).toLowerCase() + propertyName.substring(1);
+
+                //System.out.println("Property: " + propertyName);
+
+                if ("asset, expandedItems".contains(propertyName)) {
+
+                    try {
+                        if ("assetResource".equals(propertyName)) {
+                            data.add( "asset", getAssetMetadata(provider));
+                        }
+
+                        if ("expandedItems".equals(propertyName)) {
+                            data.add( "expandedItems", getExpandedItems(provider));
+                        }
+
+                        //System.out.println("Added x property: " + propertyName);
+
+                    } catch (UnsupportedOperationException e) {
+                        //System.out.println("Unsupported op: " + propertyName);
+                        //e.printStackTrace();
+                    }
+
+                    continue;
+                }
+
+                try {
+                    Object result = providerMethod.invoke(provider);
+
+                    if (result instanceof Integer) {
+                        data.add(propertyName, (Integer) result);
+                    } else if (result instanceof String) {
+                        data.add(propertyName, (String) result);
+                    } else if (result instanceof JsonArray) {
+                        data.add(propertyName, (JsonArray) result);
+                    } else if (result instanceof JsonObject) {
+                        data.add(propertyName, (JsonObject) result);
+                    }
+
+                    //System.out.println("Added property :" + propertyName);
+
+
+                } catch (IllegalAccessException e) {
+                    //e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    //e.printStackTrace();
+                    //System.out.println("InvocationTargetException : " + propertyName);
+                }
+            }
+        }
+
         return  data.build().toString();
     }
 
-    static private JsonObject getAssetMetadata(DataLayerProvider provider) {
+    static private JsonObject getAssetMetadata(DataLayerProvider provider) throws UnsupportedOperationException{
         JsonObject assetMetadataObject = null;
         Resource assetResource = provider.getAssetResource(); //getResource().getResourceResolver().getResource(fileReference);
         if (assetResource != null) {
@@ -73,7 +120,7 @@ public class DataLayerFactory {
         return assetTags.build();
     }
 
-    static private JsonArray getExpandedItems(DataLayerProvider provider) {
+    static private JsonArray getExpandedItems(DataLayerProvider provider)  throws UnsupportedOperationException{
         JsonArray obj = null;
         String[] expandedItems = provider.getDataLayerExpandedItems();
 
@@ -113,6 +160,12 @@ public class DataLayerFactory {
         }
 
         void add(String propName, int propValue) {
+            if (propValue >= 0) {
+                objectBuilder.add(propName, propValue);
+            }
+        }
+
+        void add(String propName, Integer propValue) {
             if (propValue >= 0) {
                 objectBuilder.add(propName, propValue);
             }

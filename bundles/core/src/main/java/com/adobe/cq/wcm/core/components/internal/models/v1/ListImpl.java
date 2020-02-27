@@ -59,7 +59,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Model(adaptables = SlingHttpServletRequest.class, adapters = {List.class, ComponentExporter.class}, resourceType = ListImpl.RESOURCE_TYPE)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class ListImpl implements List {
+public class ListImpl extends AbstractDataLayerProvider implements List {
 
     protected static final String RESOURCE_TYPE = "core/wcm/components/list/v1/list";
 
@@ -331,7 +331,7 @@ public class ListImpl implements List {
 
     @Override
     public int getDataLayerItemsCount() {
-        return getListItems().size();
+        return getItems().size();
     }
 
 
